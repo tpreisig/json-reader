@@ -1,10 +1,20 @@
 # JSON-Viewer
 
-Parses any valid json-file and builds up a tree to make your string user-friendly to read.
-
 ![Build Status](https://img.shields.io/badge/build-passing-brightgreen)
 ![License](https://img.shields.io/badge/license-MIT-blue.svg)
 ![Version](https://img.shields.io/badge/version-1.0.0-orange)
+
+A lightweight web application for parsing and visually displaying JSON data with collapsible tree structure, syntax highlighting, and file upload support.
+
+## 🎯 Features
+
+- **Interactive JSON Tree View**: Collapsible nodes for easy navigation of nested objects and arrays
+- **Syntax Highlighting**: Color-coded display for keys, strings, numbers, and other data types
+- **File Upload Support**: Drag-and-drop or browse JSON/JSON files directly
+- **Real-time Parsing**: Instant validation and display of JSON input
+- **Responsive Design**: Mobile-friendly layout with adaptive grid system
+- **Error Handling**: Clear feedback for invalid JSON syntax
+- **No Dependencies**: Pure HTML, CSS, and vanilla JavaScript
 
 ## Installation
 
