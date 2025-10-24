@@ -6,7 +6,7 @@
 
 A lightweight web application for parsing and visually displaying JSON data with collapsible tree structure, syntax highlighting, and file upload support.
 
-## 🎯 Features
+## Features
 
 - **Interactive JSON Tree View**: Collapsible nodes for easy navigation of nested objects and arrays
 - **Syntax Highlighting**: Color-coded display for keys, strings, numbers, and other data types
@@ -15,6 +15,10 @@ A lightweight web application for parsing and visually displaying JSON data with
 - **Responsive Design**: Mobile-friendly layout with adaptive grid system
 - **Error Handling**: Clear feedback for invalid JSON syntax
 - **No Dependencies**: Pure HTML, CSS, and vanilla JavaScript
+
+## Application
+
+![Screenshot](assets/parsed.png)
 
 ## Installation
 
@@ -30,12 +34,11 @@ A lightweight web application for parsing and visually displaying JSON data with
    ```bash
    open index.html
    ```
-   
+
 ## License
+
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-## Screenshots
-![Screenshot](screenshots/colrecog.png)
-
 ## Contact
+
 Maintained by tpreisig - feel free to reach out!

@@ -8,80 +8,10 @@
 </head>
 <body>
     <textarea id="jsonInput" cols="30" rows="10">
-    [
-        {
-            "id": 1234334,
-            "name": "Makabreli",
-            "cadence": "high",
-            "recognition": {
-                "red": "red",
-                "green": {
-                    "hue1": "#508D69",
-                    "hue2": "#D0F288",
-                    "hue3": "#D0F288",
-                    "hue4": "#DCFFB7"
-                },
-                "blue": "blue",
-                "purple": "purple",
-                "yellow": {
-                    "hue1": "#FFBB64",
-                    "hue2": "#FFCF81",
-                    "hue3": "#F8E559"
-                },
-                "pink": "pink"
-            }
-        },
-        {
-            "id": 1234335,
-            "name": "Norello",
-            "cadence": "low",
-            "recognition": {
-                "orange": "orange",
-                "yellow": "yellow"
-            }
-        },
-        {
-            "id": 1234336,
-            "name": "Martinelli",
-            "cadence": "medium",
-            "recognition": {
-                "deep pink": "deep pink",
-                "lime": "lime",
-                "orange": "orange",
-                "blue": {
-                    "hue1": "#4942E4",
-                    "hue2": "#525CEB",
-                    "hue3": "#7BD3EA",
-                    "hue4": "#AED2FF"
-                },
-                "purple": "purple"
-            }
-        },
-        {
-            "id": 1234337,
-            "name": "Fiorestini",
-            "cadence": "medium",
-            "recognition": {
-                "red": "red",
-                "green": {
-                    "hue1": "#1F8A70",
-                    "hue2": "#6CC4A1",
-                    "hue3": "#ADE792"
-                },
-                "blue": {
-                    "hue1": "#0B60B0",
-                    "hue2": "#40A2D8",
-                    "hue3": "#B4D4FF"
-                },
-                "aqua": "aqua",
-                "orange": "orange",
-                "aquamarine": "aquamarine"
-            }
-        }
-    ]
+        {"Earth":{"overview":{"name":"Earth","type":"terrestrial planet","position":3,"moons":1,"diameter_km":12742,"mass_kg":5.972e+24,"surface_gravity_m_s2":9.807},"age":{"formation":4540000000,"oldest_rock":4030000000},"geology":{"layers":[{"name":"Crust","thickness_km":{"oceanic":5,"continental":35},"composition":"Silicate rocks"},{"name":"Mantle","thickness_km":2900,"composition":"Silicate rocks with olivine"},{"name":"Outer Core","thickness_km":2270,"composition":"Liquid iron-nickel"},{"name":"Inner Core","radius_km":1220,"composition":"Solid iron-nickel"}],"plate_tectonics":{"plates":15,"major_movements":["Pacific Ring of Fire","Mid-Atlantic Ridge"],"earthquakes_per_year":500000,"volcanoes_active":1500}},"atmosphere":{"layers":[{"name":"Troposphere","height_km":12,"contains":"Weather systems"},{"name":"Stratosphere","height_km":50,"contains":"Ozone layer"},{"name":"Mesosphere","height_km":85,"contains":"Meteors burn up"},{"name":"Thermosphere","height_km":600,"contains":"Auroras"},{"name":"Exosphere","height_km":10000,"contains":"Space transition"}],"composition":[{"gas":"Nitrogen","percentage":78.08},{"gas":"Oxygen","percentage":20.95},{"gas":"Argon","percentage":0.93},{"gas":"Carbon Dioxide","percentage":0.04}],"pressure_sea_level_kPa":101.325,"temperature_range_C":{"min":-89.2,"max":56.7}},"hydrosphere":{"oceans":5,"coverage_percentage":70.8,"total_volume_km3":1332000000,"salinity_ppt":3.5,"deepest_point":{"name":"Mariana Trench","depth_m":10984,"location":"Pacific Ocean"},"freshwater_distribution":[{"type":"Glaciers/Ice caps","percentage":68.7},{"type":"Groundwater","percentage":30.1},{"type":"Surface water","percentage":1.2}]},"biosphere":{"life_zones":[{"name":"Hydrothermal vents","depth_m":4000,"temperature_C":400,"unique":"Extremophiles"},{"name":"Hadley Cells","type":"desert","animals":"Camel, Fennec fox"},{"name":"Rainforests","biodiversity":"50% of species","animals":["Jaguar","Anaconda","Macaw"]}],"species_count":{"total":8700000,"known":1200000,"insects":1000000},"oldest_tree":{"name":"Pando","age_years":80000,"location":"Utah, USA"}},"human_impact":{"population":8000000000,"cities_underwater_risk":570,"co2_emissions_gt":36.8,"deforestation_rate_ha_year":10000000,"space_debris_objects":36000},"records":{"fastest_wind_kmh":407,"hottest_temp_C":56.7,"coldest_temp_C":-89.2,"largest_lake":{"name":"Caspian Sea","area_km2":371000},"longest_river":{"name":"Nile","length_km":6650},"tallest_mountain":{"name":"Mount Everest","height_m":8848}},"space":{"distance_sun_km":149600000,"orbital_period_days":365.256,"rotation_period_hours":23.934,"escape_velocity_km_s":11.186,"magnetic_field":{"strength_tesla":0.000025,"protects_from":"Solar wind"},"nearest_star":{"name":"Proxima Centauri","distance_ly":4.24}},"fun_facts":[{"fact":"Earth's rotation is slowing by 1.7ms per century","cause":"Tidal friction"},{"fact":"A day was 21 hours long 620 million years ago","implication":"Shorter days, more years per orbit"},{"fact":"Lightning strikes Earth 100 times per second","energy":"5 billion joules per bolt"},{"fact":"Earth's core is as hot as the Sun's surface","temperature":"6000°C"},{"fact":"Oceans produce 70% of Earth's oxygen","source":"Phytoplankton"},{"fact":"Mount Everest grows 4mm per year","cause":"Plate tectonics"},{"fact":"Earth has over 1.4 billion cubic km of water","equivalent":"Cover land 2.7km deep"},{"fact":"The Sahara Desert was once a lush rainforest","period":"11,000 years ago"},{"fact":"Earth's hum is caused by ocean waves","frequency":"2.5 millihertz"},{"fact":"Diamonds rain in the mantle at 200km depth","pressure":"6 GPa"}]}} 
     </textarea>
     <div class="buttons">
-        <button onclick="parseAndDisplayJson()">Parse and Display JSON</button>
+        <button onclick="parseAndDisplayJson()">Parse JSON</button>
         <input type="file" id="fileInput" accept=".json, .txt, ">
     </div>
     <div id="jsonViewer"></div>
