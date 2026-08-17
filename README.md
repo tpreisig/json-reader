@@ -19,6 +19,7 @@ A lightweight web application for parsing and visually displaying JSON data with
 ## Application
 
 ![Screenshot](assets/parsed.png)
+![Screenshot](assets/deserialized.png)
 
 ## Installation
 

@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            outline: none;
+            font-family: 'Roboto', sans-serif;
+        }
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: rgba(250, 250, 235);
+            background-image: linear-gradient(to top, #fff 2px, transparent 2px),
+            linear-gradient(to right, #fff 2px, transparent 2px);
+            background-size: 40px 40px;
+            gap: 20px;
+            height: 100vh;
+            background-position: center;
+        }
+        .buttons {
+            display: flex;
+            flex-direction: column;
+            width: 180px;
+        }
+        button,
+        input[type=file]::file-selector-button {
+            background: rgb(139, 127, 0);
+            color: rgb(251, 207, 126);
+            border: none;
+            margin-top: 12px;
+            padding: 8px 14px;
+            cursor: pointer;
+            border-radius: 5px;
+            font-weight: 200;
+            transition: background-color 0.3s ease;
+        }
+        button:hover,
+        input[type=file]::file-selector-button:hover {
+            background: rgb(123, 113, 0);
+        }
+        #fileInput{
+            color: gray;
+            font-size: 0.9rem;
+        }
+        #jsonViewer {
+            width: 1200px;
+            height: 750px;
+            line-height: 1.5;
+            background: linear-gradient(white, rgb(205, 227, 213));
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            padding: 10px;
+            overflow: scroll;
+            font-size: 14px;
+        }
+        .collapsible {
+            cursor: pointer;
+            position: relative;
+            padding-left: 20px;
+        }
+        .collapsible::before {
+            content: '▶';
+            color: #555;
+            display: inline-block;
+            position: absolute;
+            left: 0;
+            top: 0;
+            font-size: 14px;
+            line-height: 1;
+            padding-right: 5px;
+        }
+        .collapsible.collapsed::before {
+            content: '▼';
+        }
+        .hidden {
+            display: none;
+        }
+        .key {
+            color: rgb(139, 127, 0);
+            font-weight: bold;
+        }
+        .string {
+            color: rgb(29, 13, 27);
+        }
+        .number {
+            color: red;
+        }
+        .object {
+            margin-left: 15px;
+        }
+        .array {
+            margin-left: 15px;
+        }
+        .unknown {
+            color: #555;
+        }
+    </style>
+    <title>Document</title>
+</head>
+<body>
+    <textarea id="jsonInput" cols="30" rows="10" hidden></textarea>
+    <div class="buttons">
+        <button onclick="parseAndDisplayJson()">Parse JSON</button>
+        <input type="file" id="fileInput" accept=".json, .txt, ">
+    </div>
+    <div id="jsonViewer"></div>
+    <script>
+        function parseAndDisplayJson() {
+            const jsonInput = document.getElementById('jsonInput').value;
+            try {
+                const jsonObj = JSON.parse(jsonInput);
+                document.getElementById('jsonViewer').innerHTML = '';
+                buildTree(jsonObj, document.getElementById('jsonViewer'), 'start');
+
+            } catch (e) {
+                document.getElementById('jsonViewer').innerHTML = '<p style="color: red";>Invalid JSON</p>'
+            }
+        }
+        function buildTree(obj, parentElement, key) {
+            const item = document.createElement('div');
+            parentElement.appendChild(item);
+
+            if (typeof obj === 'object' && obj !== null) {
+                const keySpan = document.createElement('span');
+                keySpan.className = 'key collapsible';
+                keySpan.textContent = key + ' ';
+                item.appendChild(keySpan);
+
+                const childContainer = document.createElement('div');
+                childContainer.className = 'hidden ' + (Array.isArray(obj) ? 'array' : 'object');
+                item.appendChild(childContainer);
+
+                for (const childKey in obj) {
+                    buildTree(obj[childKey], childContainer, childKey);
+                    keySpan.onclick = function (event) {
+                        event.stopPropagation();
+                        const childDiv = this.parentElement.querySelector('.hidden');
+                        if (childDiv.style.display === 'block') {
+                            childDiv.style.display = 'none';
+                            this.classList.remove('collapsed');
+                        } else {
+                            childDiv.style.display = 'block';
+                            this.classList.add('collapsed');
+                        }
+                    }
+                }
+            } else {
+                item.innerHTML = '<span class="key">' + key + ': </span>' + '<span class="' + getType(obj) + '">' + obj + '</span>';
+            }
+        }
+        function getType(value) {
+            if (typeof value === 'string') return 'string';
+            if (typeof value === 'number') return 'number';
+            if (Array.isArray(value)) return 'array';
+            if (typeof value === 'object' && value !== null) return 'object';
+            return 'unknown';
+        }
+        document.getElementById('fileInput').addEventListener('change', function (event) {
+            const file = event.target.files[0];
+            if (!file) {
+                return;
+            }
+            let reader = new FileReader();
+            reader.onload = function (event) {
+                const fileContent = event.target.result;
+                document.getElementById('jsonInput').value = fileContent;
+                parseAndDisplayJson();
+            };
+            reader.readAsText(file);
+        })
+    </script>
+</body>
+</html>
